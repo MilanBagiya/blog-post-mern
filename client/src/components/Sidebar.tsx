@@ -8,19 +8,18 @@ const Sidebar: React.FC = () => {
   const toggleSidebar = () => setIsOpen(!isOpen);
 
   const navItems = [
-    { path: "/", label: "Home", color: "bg-indigo-600 hover:bg-indigo-700" },
+    { path: "/", label: "Home", color: "bg-amber-600 hover:bg-amber-700" },
     {
       path: "/admin",
       label: "Admin",
-      color: "bg-purple-600 hover:bg-purple-700",
+      color: "bg-purple-600 hover:bg-amber-700",
     },
   ];
 
   return (
     <>
-      {/* Hamburger Button for Mobile */}
       <button
-        className="md:hidden fixed top-4 left-4 z-50 p-2 bg-indigo-600 text-white rounded-lg focus:outline-none"
+        className="md:hidden fixed top-4 left-4 z-50 p-2 bg-amber-600 text-white rounded-lg focus:outline-none"
         onClick={toggleSidebar}
       >
         <svg
@@ -38,7 +37,6 @@ const Sidebar: React.FC = () => {
         </svg>
       </button>
 
-      {/* Sidebar */}
       <div
         className={`fixed inset-y-0 left-0 w-64 bg-gray-900 text-white transform ${
           isOpen ? "translate-x-0" : "-translate-x-full"
@@ -56,7 +54,7 @@ const Sidebar: React.FC = () => {
                     ? `${item.color} text-white`
                     : "bg-gray-800 text-gray-300 hover:bg-gray-700"
                 }`}
-                onClick={() => setIsOpen(false)} // Close sidebar on click in mobile
+                onClick={() => setIsOpen(false)}
               >
                 {item.label}
               </Link>
@@ -65,7 +63,6 @@ const Sidebar: React.FC = () => {
         </div>
       </div>
 
-      {/* Overlay for Mobile */}
       {isOpen && (
         <div
           className="fixed inset-0 bg-black opacity-50 md:hidden z-30"

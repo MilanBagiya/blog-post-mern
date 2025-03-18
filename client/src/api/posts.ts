@@ -1,18 +1,17 @@
-import axios from 'axios';
-import { Post } from '../types/post';
+import axios from "axios";
+import { Post } from "../types/post";
 
-const API_BASE_URL = 'http://localhost:3000/api'; // Replace with deployed URL later
+const API_BASE_URL = import.meta.env.VITE_API_URL;
 
 const api = axios.create({
   baseURL: API_BASE_URL,
   headers: {
-    'Content-Type': 'application/json',
+    "Content-Type": "application/json",
   },
 });
 
-// API Endpoints
 export const fetchPosts = async (): Promise<Post[]> => {
-  const response = await api.get('/posts');
+  const response = await api.get("/posts");
   return response.data;
 };
 
@@ -21,12 +20,17 @@ export const fetchPostById = async (id: string): Promise<Post> => {
   return response.data;
 };
 
-export const createPost = async (post: Omit<Post, '_id' | 'createdAt'>): Promise<Post> => {
-  const response = await api.post('/posts', post);
+export const createPost = async (
+  post: Omit<Post, "_id" | "createdAt">
+): Promise<Post> => {
+  const response = await api.post("/posts", post);
   return response.data;
 };
 
-export const updatePost = async (id: string, post: Partial<Post>): Promise<Post> => {
+export const updatePost = async (
+  id: string,
+  post: Partial<Post>
+): Promise<Post> => {
   const response = await api.put(`/posts/${id}`, post);
   return response.data;
 };
