@@ -1,5 +1,5 @@
-import React from "react";
 import { useQuery } from "@tanstack/react-query";
+import React from "react";
 import { useParams } from "react-router-dom";
 import { fetchPostById } from "../api/posts";
 import Sidebar from "../components/Sidebar";
@@ -50,7 +50,7 @@ const PostDetails: React.FC = () => {
             {post.tags.map((tag) => (
               <span
                 key={tag}
-                className="bg-indigo-100 text-indigo-800 text-sm font-medium px-2.5 py-0.5 rounded"
+                className="bg-amber-100 text-amber-800 text-sm font-medium px-2.5 py-0.5 rounded"
               >
                 {tag}
               </span>
